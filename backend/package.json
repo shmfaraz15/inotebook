@@ -1,18 +1,21 @@
 {
   "name": "inotebook-backend",
   "version": "1.0.0",
-  "description": "i",
+  "description": "iNotebook - Your notebook on the cloud",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
-    "mongoose": "^6.8.4"
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.1",
+    "express-validator": "^6.14.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.12"
   }
 }
