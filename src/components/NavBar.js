@@ -5,7 +5,7 @@ export default function NavBar() {
     let location = useLocation();
 
     useEffect(() => {
-        console.log(location.pathname)
+        console.log(location)
     }, [location]);
 
     return (
