@@ -31,8 +31,9 @@ export default function Signup(props) {
         setCredentials({ ...credentials, [e.target.name]: e.target.value })
     }
     return (
-        <div>
-            <form onSubmit={submitHandler}>
+        <div className='mt-3'>
+            <h2>Create Account to use iNotebook</h2>
+            <form cliassName="my-3" onSubmit={submitHandler}>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Name</label>
                     <input type="text" className="form-control" id="name" name="name" value={credentials.name} onChange={onChange} aria-describedby="emailHelp" />

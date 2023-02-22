@@ -17,8 +17,8 @@ export default function Login(props) {
         if (json.success) {
             //save the authtoken and redirect
             localStorage.setItem('token', json.authtoken);
-            navigate("/");
             props.showAlert("Logged in Successfully", "success")
+            navigate("/");
 
         }
         else {
@@ -33,8 +33,9 @@ export default function Login(props) {
     }
 
     return (
-        <div>
-            <form>
+        <div className='container mt-3'>
+            <h2>Login to use iNotebook</h2>
+            <form className='my-3'>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                     <input type="email" className="form-control" id="email" name="email" value={credentials.email} onChange={onChange} aria-describedby="emailHelp" />
