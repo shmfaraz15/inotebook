@@ -9,6 +9,8 @@ import About from './components/About';
 import NavBar from './components/NavBar';
 import NoteState from './context/notes/NoteState';
 import Alert from './components/Alert';
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/About" element={<About />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/Signup" element={<Signup />} />
             </Routes>
           </div>
         </Router>

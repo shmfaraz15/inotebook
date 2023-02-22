@@ -35,19 +35,11 @@ const NoteState = (props) => {
             },
             body: JSON.stringify({ title, description, tag }) // body data type must match "Content-Type" header
         });
-        const json = response.json();//notes array
-
+        const json = await response.json();//added note object will be returned
+        console.log(json)
         console.log("Adding a new note")
-        const note = {
-            "_id": "63cd5a123da6a4f5e950611c1",
-            "user": "63cd3cfc05a3e97d215903cd",
-            "title": title,
-            "description": description,
-            "tag": tag,
-            "date": "2023-01-22T15:45:22.169Z",
-            "__v": 0
-        }
-        setNotes(notes.concat(note))
+
+        setNotes(notes.concat(json))
     }
 
     //delete a note
@@ -73,23 +65,26 @@ const NoteState = (props) => {
     const editNote = async (id, title, description, tag) => {
         const url = `${host}/api/notes/updatenote/${id}`
         const response = await fetch(url, {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjNjZDNjZmMwNWEzZTk3ZDIxNTkwM2NkIn0sImlhdCI6MTY3NDM5NTkwMn0.pVrs_qMxmzDRz_7n87Tac7JVpYIoeQL1csZLPFbstQY'
             },
             body: JSON.stringify({ title, description, tag }) // body data type must match "Content-Type" header
         });
-        const json = response.json();//notes array
-
-        for (let index = 0; index < notes.length; index++) {
-            const note = notes[index];
+        const json = await response.json();//notes array
+        console.log(json)
+        let newNotes = JSON.parse(JSON.stringify(notes))
+        for (let index = 0; index < newNotes.length; index++) {
+            const note = newNotes[index];
             if (note._id === id) {
-                note.title = title;
-                note.description = description;
-                note.tag = tag
+                newNotes[index].title = title;
+                newNotes[index].description = description;
+                newNotes[index].tag = tag
+                break;
             }
         }
+        setNotes(newNotes)
     }
     return (
         <NoteContex.Provider value={{ notes, addNote, deleteNote, editNote, getNotes }}>
