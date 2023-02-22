@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-export default function Signup() {
+export default function Signup(props) {
     let navigate = useNavigate();
     const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "", })
     const submitHandler = async (e) => {
@@ -19,9 +19,10 @@ export default function Signup() {
             //save the authtoken and redirect
             localStorage.setItem('token', json.authtoken);
             navigate("/");
+            props.showAlert("Account Created Successfully", "success")
         }
         else {
-            alert(json.error)
+            props.showAlert(json.error, "danger")
         }
         console.log(json)
     }

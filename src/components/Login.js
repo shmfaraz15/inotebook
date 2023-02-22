@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-export default function Login() {
+export default function Login(props) {
     let navigate = useNavigate();
     const [credentials, setCredentials] = useState({ email: "", password: "" })
     const submitHandler = async (e) => {
@@ -18,9 +18,12 @@ export default function Login() {
             //save the authtoken and redirect
             localStorage.setItem('token', json.authtoken);
             navigate("/");
+            props.showAlert("Logged in Successfully", "success")
+
         }
         else {
-            alert(json.error)
+            props.showAlert(json.error, "danger")
+            // alert(json.error)
         }
         console.log(json)
     }
