@@ -20,7 +20,7 @@ export default function Login() {
             navigate("/");
         }
         else {
-            alert("Invalid Credentials")
+            alert(json.error)
         }
         console.log(json)
     }
